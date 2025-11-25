@@ -393,13 +393,19 @@ def ordenar_numeros(lista):
 print(ordenar_numeros([515,755,929]))
 
 def intercambiar(persona):
-    i = 1
-    fin = ""
-    while i > 0:
-        fin += str(list(persona[i]))
-        i -= 1
-    return fin
+    i = persona.split()
+    return i[1] + ", " + i[0]
 
 print(intercambiar("Paco Sanz")) 
 
-#Hola xd
+def mayoritario(lista: list):
+    """Encuentra el numero que mas se repite en la lista"""    
+    print(lista.count(5))
+    i = 0
+    while i < len(lista):
+        if lista.count(lista[i]) > len(lista) / 2:
+            return lista[i]
+        i+=1
+    return None
+
+print(mayoritario([1,1,1,1,1,2,3,4]))
