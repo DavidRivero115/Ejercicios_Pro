@@ -409,3 +409,137 @@ def mayoritario(lista: list):
     return None
 
 print(mayoritario([1,1,1,1,1,2,3,4]))
+
+
+def matriz_cuadrada(n):
+    """Una funcion que recibe un numero y devuelve una matriz de ese numero"""
+    res = []
+    lista = list(range(1, n + 1)) #Esta lista se haria con un while porque no hemos dado range
+    res.append(lista)
+    i = 1    
+    while i < n:
+        lista = (lista[n-1:] + lista[:n-1])
+        res.append(lista)
+        i +=1
+    return res
+
+print(matriz_cuadrada(4))
+
+def reves(lis):
+    """
+    Escribir un programa que guarde en una lista diez cadenas introducidas por teclado y
+    luego las muestre en orden inverso a como se han introducido, desde la última cadena
+    introducida hasta la primera.
+    """
+    res = []
+    i = len(lis) -1
+    while i >= 0:
+        res.append(lis[i])
+        i -=1
+    return res
+
+print(reves([1,2,3,4,5,6,7,8]))
+
+#def mcd():
+#    a = int(input("Número 1: "))
+#    b = int(input("Número 2: "))
+#
+#    while b != 0:
+#        a, b = b, a % b
+#
+#    return a
+#
+#print(mcd())
+#print(10 % 8)
+
+"""17. Escribir un programa que lea un carácter, correspondiente a un dígito hexadecimal:
+0, 1, ..., 9, A, B, ..., F
+y lo convierta en el valor decimal correspondiente:
+0, 1, ..., 9, 10, 11, ..., 15"""
+
+t = "[1,2,3]"
+
+print(t.center(11,"*"))
+
+def karaca(s):
+    def girar(s):
+        s_girada = ""
+        i = len(s) -1
+        while i >= 0:
+            s_girada += s[i]
+            i-=1
+        return s_girada
+    return girar(s).translate(str.maketrans("aeiou", "01223")) +"aca" 
+
+print(karaca("Hola"))
+
+
+def entrevista(lst, tot):
+    if len(lst) != 8 or sum(lst) > tot:
+        return "Descalificado"
+    i = 0
+    t = 10
+    while i < 7:
+        if lst[i] + lst[i+1] > t:
+            return "Descalificado"
+        i += 2
+        t += 10
+    return "Calificado"
+
+print(entrevista([5, 5, 10, 10, 15, 15, 20, 20], 120))
+
+def resta_matrices(lst1: list[list:int],lst2: list[list:int]):
+    """Funcion que recibe dos matrices y devueleve la matriz resultante de restar lst1 y lst2"""
+    lst3 = lst1
+    i = 0
+    while i < len(lst1):
+        j = 0
+        while j < len(lst2):
+            lst3[i][j] = lst1[i][j] - lst2[i][j]
+            j +=1
+        i +=1
+    return lst3
+
+print(resta_matrices([[1,2,3],[4,5,6],[7,8,9]],[[1,2,3],[4,5,6],[7,8,10]]))
+
+
+def calcetines(lst):
+    """Recibe una lista con pares de calcetines y tiene que devolver cuantos pares hay. Cada numero es un color"""
+    def sin_repetidos(lst):
+        sin = []
+        i = 0
+        while i < len(lst):
+            if lst[i] not in sin:
+                sin.append(lst[i])
+            i+=1
+        return sin
+    x = sin_repetidos(lst)
+    res = 0
+    i = 0
+    while i < len(x):
+        res += lst.count(x[i]) // 2
+        print(lst.count(x[i]))
+        i +=1
+    return res
+
+print(calcetines([10, 20, 20, 10, 10, 30, 50, 10, 20]))
+
+
+def flip(lst):
+    if len(lst) == 0:
+        return lst
+    res = []
+    i = 0
+    if type(lst[0]) == int:
+        while i < len(lst):
+            res.append([lst[i]])
+            i+=1
+        return res
+    while i < len(lst):
+        res.append(lst[i][0])
+        i+=1
+    return res
+
+print(flip([[1],[2],[3],[4]]))
+print(flip([1,2,3,4]))
+print(flip([]))
